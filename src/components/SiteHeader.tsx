@@ -27,8 +27,17 @@ const menuSecondary = [
 export function SiteHeader() {
   const pathname = usePathname()
   const innerPage = pathname !== '/'
-  const scrolled = innerPage
+  const [homeScrolled, setHomeScrolled] = useState(false)
+  const scrolled = innerPage || homeScrolled
   const [menuOpen, setMenuOpen] = useState(false)
+
+  useEffect(() => {
+    if (innerPage) return
+    const onScroll = () => setHomeScrolled(window.scrollY > 80)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [innerPage])
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setMenuOpen(false) }
