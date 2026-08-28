@@ -9,16 +9,16 @@ import { useEffect, useRef, useState } from 'react'
 // phrases so the video scene and the copy do not feel like a hard cut.
 const AREAS = [
   // original aerial clips (unchanged)
-  { name: 'Clear Lake City', src: '/videos/hero-clear-lake-city.mp4', poster: '/assets/reference/Clear-Lake-Texas-e1736781694121.jpg', alt: 'Clear Lake City Texas aerial' },
+  { name: 'Clear Lake City', src: '/videos/hero-clear-lake-city.mp4', poster: '/assets/reference/clearlaketxhomesforsale.jpg',         alt: 'Clear Lake City Texas aerial' },
   { name: 'League City',     src: '/videos/hero-league-city.mp4',     poster: '/assets/reference/leaguecityhomesforsale.jpg',          alt: 'League City Texas aerial' },
   { name: 'Seabrook',        src: '/videos/hero-seabrook.mp4',        poster: '/assets/reference/seabrookhomesforsale.jpg',            alt: 'Seabrook Texas aerial' },
   { name: 'Friendswood',     src: '/videos/hero-friendswood.mp4',     poster: '/assets/reference/friendswoodhomesforsale.jpg',         alt: 'Friendswood Texas aerial' },
   // new real-motion scenes for the other service areas
   { name: 'Kemah',           src: '/videos/hero-lakehouse.mp4',  poster: '/assets/reference/seabrookhomesforsale02.jpg',          alt: 'Lakeside home near Kemah' },
-  { name: 'Nassau Bay',      src: '/videos/hero-golf.mp4',            poster: '/assets/reference/clearlaketxhomesforsale.jpg',         alt: 'Aerial golf course near Nassau Bay' },
+  { name: 'Nassau Bay',      src: '/videos/hero-golf.mp4',            poster: '/assets/reference/NASAhomesforsale.jpg',               alt: 'Aerial golf course near Nassau Bay' },
   { name: 'Galveston',       src: '/videos/hero-fishing.mp4',         poster: '/assets/reference/leaguecityhomesforsale.jpg',          alt: 'Fishing the Texas coast near Galveston' },
-  { name: 'Pearland',        src: '/videos/hero-mower.mp4',           poster: '/assets/reference/NASAhomesforsale.jpg',               alt: 'Lawn care in Pearland Texas' },
-  { name: 'Baytown',         src: '/videos/hero-construction.mp4',    poster: '/assets/reference/Clear-Lake-Texas-e1736781694121.jpg', alt: 'New home construction in Baytown' },
+  { name: 'Pearland',        src: '/videos/hero-mower.mp4',           poster: '/assets/reference/clearlaketxhomesforsale.jpg',         alt: 'Lawn care in Pearland Texas' },
+  { name: 'Baytown',         src: '/videos/hero-construction.mp4',    poster: '/assets/reference/NASAhomesforsale.jpg',               alt: 'New home construction in Baytown' },
   { name: 'Dickinson',       src: '/videos/hero-mom-baby.mp4',        poster: '/assets/reference/clearlaketxhomesforsale.jpg',         alt: 'Family life in Dickinson' },
   { name: 'Webster',         src: '/videos/hero-grandma.mp4',         poster: '/assets/reference/seabrookhomesforsale.jpg',            alt: 'Talking with loved ones in Webster' },
   { name: 'La Porte',        src: '/videos/hero-showing.mp4',         poster: '/assets/reference/leaguecityhomesforsale.jpg',          alt: 'Homes for sale in La Porte' },
@@ -41,7 +41,7 @@ export function VideoHero({ started = true }: { started?: boolean }) {
   const [playing, setPlaying] = useState<number | null>(null)
   const [headlineIndex, setHeadlineIndex] = useState(0)
   const [headlineVisible, setHeadlineVisible] = useState(true)
-  const [motionPreference, setMotionPreference] = useState<'pending' | 'full' | 'reduce'>('pending')
+  const [motionPreference, setMotionPreference] = useState<'pending' | 'full' | 'reduce'>('full')
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([])
   const readyVideos = useRef(new Set<number>())
   const activeRef = useRef(active)

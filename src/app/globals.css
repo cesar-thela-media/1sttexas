@@ -1003,6 +1003,12 @@ blockquote cite {
 
 /* Areas — chip grid */
 .areas-section { padding-top: 0; }
+.home-next-move {
+  position: relative;
+  z-index: 8;
+  isolation: isolate;
+  background: var(--paper);
+}
 .area-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
 .area-grid a {
   display: flex; justify-content: space-between; align-items: center; gap: 10px;
@@ -1302,7 +1308,15 @@ blockquote cite {
 }
 .nws-card-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,26,51,.25); }
 /* NWS reviews — red band, readable text-only testimonial cards */
-.nws-reviews { background: linear-gradient(160deg, #1e5fd6, var(--red) 55%, var(--red-warm)); color: #fff; padding: 90px 7vw; }
+.nws-reviews {
+  position: relative;
+  z-index: 8;
+  isolation: isolate;
+  overflow: hidden;
+  background: linear-gradient(160deg, #1e5fd6, var(--red) 55%, var(--red-warm));
+  color: #fff;
+  padding: 90px 7vw;
+}
 .nws-reviews-inner { max-width: 1280px; margin: 0 auto; display: grid; gap: 44px; }
 .nws-reviews-head { display: grid; justify-items: center; text-align: center; gap: 12px; }
 .nws-pill-badge {
@@ -1356,7 +1370,13 @@ blockquote cite {
 @keyframes areasSlideLeft { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @keyframes areasSlideRight { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 .areas-slide-track .nws-area-card { width: 320px; flex-shrink: 0; }
-.areas-section { overflow: hidden; }
+.areas-section {
+  position: relative;
+  z-index: 8;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--paper);
+}
 /* Buy/Rent/Sell choice modal */
 .area-choice-overlay {
   position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; padding: 20px;
@@ -1618,7 +1638,12 @@ blockquote {
 /* ============================================================
    FOOTER
    ============================================================ */
-.footer { padding: 70px 7vw 25px; background: #061a2c; color: #fff; border-radius: 12px 12px 0 0; margin: 0 .5rem .5rem; }
+.footer {
+  position: relative;
+  z-index: 8;
+  isolation: isolate;
+  padding: 70px 7vw 25px; background: #061a2c; color: #fff; border-radius: 12px 12px 0 0; margin: 0 .5rem .5rem;
+}
 .footer-cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; max-width: 1400px; margin: 0 auto 54px; padding-bottom: 40px; border-bottom: 1px solid rgba(255, 255, 255, 0.12); }
 .footer-cta h2 { margin: 8px 0 6px; color: #fff; font-size: clamp(34px, 4vw, 52px); line-height: 1; letter-spacing: -0.04em; }
 .footer-cta .eyebrow { color: #9cc4ff; }
@@ -1714,10 +1739,10 @@ blockquote {
    MOTION
    ============================================================ */
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity .8s, transform .8s var(--ease-expo); }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal.visible { opacity: 1; transform: none; }
 /* NWS-style staggered card cascade: children fade up 60ms apart */
 .reveal-item { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s var(--ease-expo); }
-.reveal.visible .reveal-item { opacity: 1; transform: translateY(0); }
+.reveal.visible .reveal-item { opacity: 1; transform: none; }
 @keyframes heroIn { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: none; } }
 
 /* ============================================================
@@ -3525,12 +3550,13 @@ blockquote {
   .areas-slide-right { animation: areasSlideRight 52s linear infinite !important; }
 }
 
-/* Reduced motion: show the complete testimonial set without clipping or
-   turning the section into a hidden-scroll interaction. */
+/* Reduced motion: show the unique cards, keep them clipped so they cannot
+   paint over the area marquee or footer. */
 @media (prefers-reduced-motion: reduce) {
   #reviews .nws-rev-scroll {
     height: auto;
-    overflow: visible;
+    max-height: none;
+    overflow: hidden;
     -webkit-mask-image: none;
     mask-image: none;
   }
@@ -6754,6 +6780,8 @@ button.button.button-navy *,
 
 .svc-section-stack {
   position: relative;
+  z-index: 1;
+  isolation: isolate;
   width: 100%;
   background: var(--navy-deep);
 }
