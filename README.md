@@ -13,25 +13,31 @@ A Next.js 15 / React 19 / TypeScript website with Tailwind CSS v4, GSAP-ready mo
 ## Run locally
 
 ```bash
-npm install
-npm run dev
+npm install   # or: bun install
+npm run dev   # or: bun run dev
 ```
 
-Open http://localhost:3000.
+Open http://localhost:3000 (or `npx next dev -p 4000` if 3000 is taken).
+
+**Package manager:** `package-lock.json` is the source of truth for Vercel/npm. `bun.lock` is optional for local Bun / Docker builds.
 
 ## Build & verify
 
 ```bash
-npm run build        # production build — must complete with zero errors
-npm run typecheck    # TypeScript check
-npm run start        # serve the production build locally
+bun run build        # production build — must complete with zero errors
+bun run typecheck    # TypeScript check
+bun run test         # stack / path contract tests
+bun run start        # serve the production build locally (node server.js)
 ```
+
+`npm run …` works the same if you prefer npm (`package-lock.json` is present).
 
 ## Deploy to Vercel
 
 1. Push this repo to GitHub and import it into Vercel.
 2. Vercel auto-detects Next.js (`vercel.json` pins `"framework": "nextjs"`).
-3. Build command / install command / output directory: leave default (Vercel handles Next.js automatically — do **not** set `dist` or `.next` as output directory).
+3. Leave build / install / output directory at Vercel defaults — do **not** set `dist` or `.next` as the output directory.
+4. `next.config.ts` skips `output: 'standalone'` when `VERCEL=1` so Vercel uses its native Next runner.
 
 Production branch: `main`.
 
@@ -43,6 +49,4 @@ Optional environment variables:
 
 ## Railway / Docker
 
-Railway uses `railway.toml` and the multi-stage `Dockerfile` (standalone Next.js output via `output: 'standalone'`). Health endpoint: `/api/health`.
-
-> Image URLs are used as visual placeholders in this recreation. Replace them with licensed project assets before publishing.
+Railway uses `railway.toml` and the multi-stage `Dockerfile` (Bun build → Node 20 run with `output: 'standalone'` when not on Vercel). Health endpoint: `/api/health`.

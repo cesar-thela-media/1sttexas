@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { areaSlug, email, phone, serviceAreas } from '@/content/site'
+import { IDX_LOGIN_URL, IDX_SIGNUP_URL } from '@/content/idx'
+import { email, phone, salePath, serviceAreas } from '@/content/site'
 
 const socials = [
   ['Facebook', 'https://www.facebook.com/1stTexasRealtors/', 'M12 2.04c-5.5 0-10 4.46-10 9.96 0 4.98 3.66 9.1 8.44 9.85v-6.96H7.9v-2.9h2.54V9.85c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.9h-2.34v6.96c4.78-.75 8.44-4.87 8.44-9.85 0-5.5-4.5-9.96-10-9.96z'],
@@ -18,10 +19,10 @@ const services = [
   ['Commercial Property', '/commercial-property-realtors/'],
 ]
 
-const moreServices = [
+const moreServices: [string, string, boolean?][] = [
   ['Home Search', '/home-search/'],
-  ['Register', '/register/'],
-  ['Member Login', '/login/'],
+  ['Register', IDX_SIGNUP_URL, true],
+  ['Member Login', IDX_LOGIN_URL, true],
   ['Clear Lake Homes for Sale', '/clear-lake-tx-homes-for-sale/'],
   ['View All Our Services', '/home-buyers/'],
 ]
@@ -31,33 +32,34 @@ const quickLinks = [
   ['About', '/about/'],
   ['Testimonials', '/realtor-reviews/'],
   ['Meet Our Agents', '/agents/'],
-  ['FAQs', '/#faq'],
+  ['Privacy Policy', '/privacy-policy/'],
   ['Contact', '/contact/'],
 ]
 
 export function SiteFooter() {
   return <footer className="footer">
-    <div className="footer-cta"><div><p className="eyebrow">Ready when you are</p><h2>Ready to make your move?</h2><p>Local knowledge. Personal service. Family owned since 2004.</p></div><Link className="button button-primary" href="/contact/">Contact a Realtor <span className="btn-icon">↗</span></Link></div>
-
     {/* NWS-style top row: logo + tagline left, socials right */}
     <div className="footer-top">
       <div className="footer-brand">
         <img src="/assets/reference/1stTexasRealtors-logo-new.png" alt="1st TEXAS REALTORS — Full Service Brokerage" />
         <p>Family owned since 2004 · Clear Lake NASA, Texas</p>
       </div>
-      <div className="footer-socials">{socials.map(([label, href, path]) => <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} title={label}><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d={path} /></svg><span>{label}</span></a>)}</div>
+    <div className="footer-socials">{socials.map(([label, href, path]) => <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} title={label}><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d={path} /></svg></a>)}</div>
     </div>
 
     {/* NWS-style 4-column grid */}
     <div className="footer-grid">
       <div className="footer-col"><p className="eyebrow">Services</p>{services.map(([label, href]) => <Link key={label} href={href}>{label}</Link>)}</div>
-      <div className="footer-col"><p className="eyebrow">Services</p>{moreServices.map(([label, href]) => <Link key={label} href={href}>{label}</Link>)}</div>
+      <div className="footer-col"><p className="eyebrow">Services</p>{moreServices.map(([label, href, external]) => external
+        ? <a key={label} href={href} target="_blank" rel="noopener noreferrer">{label}</a>
+        : <Link key={label} href={href}>{label}</Link>
+      )}</div>
       <div className="footer-col"><p className="eyebrow">Quick Links</p>{quickLinks.map(([label, href]) => <Link key={label} href={href}>{label}</Link>)}</div>
       <div className="footer-col footer-contact"><p className="eyebrow">Contact</p><span className="footer-city">Clear Lake NASA, Texas</span><a className="footer-phone" href="tel:+12812413121">{phone}</a><a className="footer-mail" href={`mailto:${email}`}>{email}</a><span className="footer-hours">Monday–Saturday · 9am–6pm</span></div>
     </div>
 
     {/* NWS-style area badges row */}
-    <div className="footer-areas-row"><p className="eyebrow">Service Areas</p><div className="footer-areas">{serviceAreas.map(area => <Link key={area} href={`/realtors-in-${areaSlug(area)}/`}>{area}</Link>)}</div></div>
+    <div className="footer-areas-row"><p className="eyebrow">Service Areas</p><div className="footer-areas">{serviceAreas.map(area => <Link key={area} href={salePath(area)}>{area}</Link>)}</div></div>
 
     <div className="footer-badges"><img src="/assets/client/Texas-Monthly-5-Star-Real-Estate-Agent.png" alt="Texas Monthly Five-Star Real Estate Agent" className="badge-logo" /><img src="/assets/client/Equal-Housing-Opportunity-Realtors.gif" alt="Equal Housing Opportunity" /><img src="/assets/client/Multiple-Listing-Service-Realtors.gif" alt="Member of the Multiple Listing Service" /><img src="/assets/client/Realtor-Association.gif" alt="Realtor Association Member" /></div>
     <div className="footer-bottom"><span>© {new Date().getFullYear()} 1st Texas Realtors. All rights reserved.</span><div className="footer-legal"><Link href="/privacy-policy/">Privacy</Link><Link href="/privacy-policy/">Terms</Link></div></div>

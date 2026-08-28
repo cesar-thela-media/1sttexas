@@ -1,38 +1,58 @@
 import Link from 'next/link'
-import { IDX_SEARCH_URL, IDX_SIGNUP_URL } from '@/content/idx'
+import { IDX_LOGIN_URL, IDX_SEARCH_URL, IDX_SIGNUP_URL } from '@/content/idx'
 
-const externalLinkProps = { target: '_blank', rel: 'noreferrer' } as const
+const externalLinkProps = { target: '_blank', rel: 'noopener noreferrer' } as const
+
+const features = [
+  {
+    title: 'Search homes available today',
+    body: 'Browse live MLS listings for homes to buy or rent across Clear Lake NASA and surrounding communities. Prices, photos, and status stay current.',
+    href: IDX_SEARCH_URL,
+    cta: 'Search homes',
+    external: true,
+  },
+  {
+    title: 'Register for email alerts',
+    body: 'Save custom searches and get automatic alerts when new listings match what you want — before they get crowded.',
+    href: IDX_SIGNUP_URL,
+    cta: 'Register for alerts',
+    external: true,
+  },
+  {
+    title: 'Already a member?',
+    body: 'Log in to manage saved searches, favorites, and listing alerts from your IDX account.',
+    href: IDX_LOGIN_URL,
+    cta: 'Member login',
+    external: true,
+  },
+  {
+    title: 'Looking to sell?',
+    body: 'Get a no-obligation Market Analysis using comparable sales, current inventory, and the features that make your home valuable.',
+    href: '/contact/',
+    cta: 'Free Market Analysis',
+    external: false,
+  },
+] as const
 
 export function HomeSearch() {
   return (
-    <div className="home-search-wrap">
-      <div className="search-sell-card">
-        <p className="eyebrow">Live IDX search</p>
-        <h2>See homes available today</h2>
-        <p>
-          Search current MLS listings for homes to buy or rent across Clear Lake NASA
-          and the surrounding communities. The live search keeps prices, availability,
-          photos, and status current.
-        </p>
-        <div className="hero-actions">
-          <a className="button button-red" href={IDX_SEARCH_URL} {...externalLinkProps}>
-            Search homes <span>↗</span>
-          </a>
-          <a className="button button-dark" href={IDX_SIGNUP_URL} {...externalLinkProps}>
-            Register for alerts <span>↗</span>
-          </a>
-        </div>
-      </div>
-      <div className="search-sell-card">
-        <h2>Looking to sell?</h2>
-        <p>
-          We can prepare a no-obligation Market Analysis using comparable sales,
-          current inventory, and the features that make your home valuable.
-        </p>
-        <Link className="button button-dark" href="/contact/">
-          Get a free Market Analysis <span>↗</span>
-        </Link>
-      </div>
+    <div className="buy-market-grid listings-feature-grid">
+      {features.map((card, i) => (
+        <article className="buy-market-card rent-feature-card" key={card.title}>
+          <span className="about-service-num">{String(i + 1).padStart(2, '0')}</span>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+          {card.external ? (
+            <a className="button button-navy svc-stack-cta" href={card.href} {...externalLinkProps}>
+              {card.cta} <span className="btn-icon">↗</span>
+            </a>
+          ) : (
+            <Link className="button button-navy svc-stack-cta" href={card.href}>
+              {card.cta} <span className="btn-icon">↗</span>
+            </Link>
+          )}
+        </article>
+      ))}
     </div>
   )
 }

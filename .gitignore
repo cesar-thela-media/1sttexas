@@ -1,5 +1,35 @@
 node_modules
 .next
+out
 tsconfig.tsbuildinfo
 .env*
 !.env.example
+
+# Local tooling / agent noise — do not ship to client repos
+.playwright-mcp/
+.playwright/
+test-results/
+playwright-report/
+mobile-audit-out.txt
+mobile-audit-results.json
+audit-err.txt
+body.txt
+scripts/cross-browser/
+
+# Scratch screenshots & local captures
+*.png
+*.jpg
+!public/**/*.png
+!public/**/*.jpg
+!public/**/*.jpeg
+!public/**/*.gif
+!public/**/*.webp
+!public/**/*.svg
+
+# Dual lockfiles stay committed: package-lock.json for Vercel/npm, bun.lock for Docker.
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
+.vercel

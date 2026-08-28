@@ -33,13 +33,12 @@ export const serviceAreas = [
 ]
 
 export const areaSlug = (area: string) => area.toLowerCase().replaceAll(' ', '-')
-export const salePath = (area: string) => `/realtors-in-${areaSlug(area)}/`
-export const rentPath = (area: string) => `/${areaSlug(area)}-tx-homes-for-rent/`
+export { salePath, rentPath, saleCanonical, rentCanonical } from './paths'
 
 export const agents: Agent[] = [
   { name: 'Mark Bocado', slug: 'mark-bocado', role: 'Realtor', image: '/assets/reference/agents/Mark-Bocado.jpg', bio: 'Mark Bocado is a Houston area realtor that strives to provide the highest level of service to all of his clients. Mr. Bocado grew up locally; therefore, he is in tune with the small nuances that may not always be apparent. Mark excelled in school leading to a Master\'s degree and partnership with his wife, who is an entrepreneur. Then one day, the real estate bug really took hold of him, and he decided that this industry was his true passion. Mr. Bocado is a family man with 4 beautiful children and a highly supportive wife. He is an avid tennis and basketball player and understands that hard work can lead to achieving your goals. Real estate is a world dominated by relationships; therefore, Mark invests in making each interaction special and lasting. Attention to detail, efficiency, and solving problems are a highlight of his skill set. Mark endeavors to create, attain, and maintain connections that are optimized by communication and attentive interaction. He works with his team at 1st Texas Realtors to help each client achieve success and reach their goals.', phone: '281-836-0074', email: 'mark@1txrealtors.com' },
   { name: 'Matt Bradley', slug: 'matt-bradley', role: 'Realtor', image: '/assets/reference/agents/Matt-Bradley.jpg', bio: 'I was born in Abilene, Texas, and traveled to many East African nations. As part of my parents humanitarian efforts, I enjoyed the cultural lessons living abroad. In 1995, my family moved to the Clear Lake area and I attended Dobie High School in nearby Pasadena. Today, I am married with a daughter, work as a Realtor, read, play golf and general fitness enthusiast. There are so many places in the Clear Lake and Galveston Bay area to enjoy the outdoors and waterfront. Previously, I worked as a public educator and teacher in the Clear Lake area for many years, and subsequently became a realtor who enjoys making a curriculum out of the real estate process. As your Realtor, you can work with a family man with experience in diversity and a public educator when it comes to every decision important to your family.', phone: '832-654-9820', email: 'matt@1txrealtors.com' },
-  { name: 'Nancy Estes', slug: 'nancy-estes', role: 'Realtor', image: '/assets/reference/agents/Nancy-Estes.jpg', bio: 'Nancy & Van Estes team up for the two-for-one Realtor experience specializing in the excitement of first time home buyers and new home sales. Nancy Estes was born and raised in Deer Park, Texas, graduated from Deer Park High School, and is considered a local real estate expert. In 1994, after wanting to spend more time with her husband, Nancy decided to assist Van in his real estate activities and found her calling like an epiphany, and became a Realtor. Van Estes has been an active licensed Realtor since 1991. Together, Van & Nancy total 29-years real estate experience. Nancy enjoys photography, crochet, community service and is a long time member of the Sagemont Church, yes, the one proudly displaying the 170-foot tall Cross next to I45. Please contact Nancy & Van for the husband and wife team of local real estate experts.', phone: '832-493-9398', email: 'nancy@1txrealtors.com' },
+  { name: 'Nancy Estes', slug: 'nancy-van-estes', role: 'Realtor', image: '/assets/reference/agents/Nancy-Estes.jpg', bio: 'Nancy & Van Estes team up for the two-for-one Realtor experience specializing in the excitement of first time home buyers and new home sales. Nancy Estes was born and raised in Deer Park, Texas, graduated from Deer Park High School, and is considered a local real estate expert. In 1994, after wanting to spend more time with her husband, Nancy decided to assist Van in his real estate activities and found her calling like an epiphany, and became a Realtor. Van Estes has been an active licensed Realtor since 1991. Together, Van & Nancy total 29-years real estate experience. Nancy enjoys photography, crochet, community service and is a long time member of the Sagemont Church, yes, the one proudly displaying the 170-foot tall Cross next to I45. Please contact Nancy & Van for the husband and wife team of local real estate experts.', phone: '832-493-9398', email: 'nancy@1txrealtors.com' },
   { name: 'Jay Herder', slug: 'jay-herder', role: 'Realtor', image: '/assets/reference/agents/Jay-Herder.png', bio: 'Jay Herder grew up in the Friendswood and League City area, graduated from Friendswood High School and earned a Bachelors of Science degree in Hotel & Restaurant Management from the University of Houston. After living in downtown Houston for 6-years, Jay now resides in League City with his wife, Erin. Jay has successfully managed 14 different bars and restaurants and compares the process to home buying where every detail of the restaurant, or home, has to be addressed for presentation or value. Using a very detailed process, Jay strives to help educate his clients on every aspect of buying or selling homes. Jay & Erin, who manages a restaurant in Hobby Airport, enjoy a pastime of dining together at new restaurants and comparing the details and overall experience. As a casual carpenter, Jay also practices wood working and has worked on a number of pieces to furnish his and his friends\' homes.', phone: '832-790-7195', email: 'jay@1txrealtors.com' },
   { name: 'David Karstedt', slug: 'david-karstedt', role: 'Broker / Owner', image: '/assets/reference/agents/David-Karstedt.jpg', bio: 'David Karstedt was born in Houston, Texas, is a life-long resident of Bay Area Houston, attended Pasadena High School, studied Business at Sam Houston State University, and currently resides in El Lago. As a realtor and broker, David has over 20-years real estate experience in Bay Area Houston and voted Five-Star Real Estate Professional by Texas Monthly Magazine every year since 2010. This award goes to the Top 3% Realtors in the state of Texas and in recognition of service excellence. David Karstedt and wife Simone work as a team at 1st Texas Realtors, receive overwhelmingly positive reviews highlighting their exceptional responsiveness, deep knowledge and strong negotiation skills. The dynamic duo is known for personalized, patient service making the complex home buying and selling process smooth and enjoyable for their clients. They are praised for exceeding expectations, becoming trusted advisors and earning loyalty through high-quality service. Today, David is the owner and broker of 1st Texas Realtors, a family owned and operated real estate brokerage since 2004. My wife Simone Karstedt, a childhood friend since the second grade, is my full time partner in our business, you get twice the amount of excellent service and we do it all!', phone: '713-885-2228', email: 'david@1txrealtors.com' },
   { name: 'Simone Karstedt', slug: 'simone-karstedt', role: 'Realtor / Owner', image: '/assets/reference/1st-tx-realtors-couple-slider.png', bio: 'Simone Karstedt was born in Yorkshire, England, and also lived in Frankfurt, Germany, where her Mom met an American from Houston and they settled in Pasadena, Texas. Simone Karstedt and husband David work as a team at 1st Texas Realtors, receive overwhelmingly positive reviews highlighting their exceptional responsiveness, deep knowledge and strong negotiation skills. The dynamic duo is known for personalized, patient service making the complex home buying and selling process smooth and enjoyable for their clients. They are praised for exceeding expectations, becoming trusted advisors and earning loyalty through high-quality service. For Simone, real estate is about relationships and getting into other people\'s world, the personal time spent with clients while driving in the car, viewing homes, eating together and enduring the long process of buying or selling a home. Simone enjoys taking the frustration out of the process and even making it fun at times. Simone is involved in her church community where she greets regularly at worship and likes to host dinners for families at church. An avid reader and fitness enthusiast, Simone has owned a personal training studio in West University and helped open Fit Athletic Club in River Oaks, Houston. Other hobbies include snow skiing and river floating in the Texas hill country.', phone: '832-758-7408', email: 'simone@1txrealtors.com' },
@@ -120,20 +119,9 @@ export const testimonials = [
   { quote: 'David and Simone Karstedt of 1st Texas Realtors have been assisting me on Real Estate deals for the last 10 years. They have handled multiple property purchases and sales. They are experienced and know the market well… and in them you’ll find a firm that you can also trust with the biggest financial moves of your life. I have peace of mind knowing that i can trust not only their judgement but that they aren’t just out to make a buck without keeping my best interests at heart.', author: 'Glen K.' },
 ]
 
-export const faqs: [string, string][] = [
-  ['How do I get started with buying a home?', 'Get pre-approved by a mortgage banker for the amount you want, then use our real-time MLS Home Search to explore homes for sale and rent. We guide you through offers, contingencies, addendums, and closing.'],
-  ['What is a free Market Analysis?', 'We review your home, neighborhood, and recent sales to recommend a competitive price and a marketing plan — at no cost and with no obligation.'],
-  ['Do you help with rentals and property management?', 'Yes. We handle real-time rental listings, tenant interviews, background checks, leases, deposits, maintenance, and repairs for owners.'],
-  ['Which areas do you serve?', 'We serve Clear Lake NASA and surrounding communities including League City, Friendswood, Seabrook, Kemah, Nassau Bay, Galveston, Pearland, and more.'],
-  ['Are you a full-service brokerage?', 'Family owned since 2004, we represent buyers, sellers, renters, and commercial clients with over 100 years of combined experience.'],
-  ['How fast can I sell my home?', 'Every home is different, but our team regularly lists on a Friday and receives multiple offers by the end of the weekend. We price with comparable sales and market a plan tailored to your home.'],
-  ['Can you help me if I am relocating to the Clear Lake area?', 'Absolutely. Relocation clients get the same full-service treatment: neighborhood guidance, school research, commute advice, virtual tours, and real-time listings across the region.'],
-  ['Do you handle commercial real estate?', 'Yes — commercial property sales and leasing are part of our full-service brokerage. Contact us to discuss your commercial needs.'],
-]
-
 export const servicePages: Record<string, ServicePage> = {
   'home-buyers': {
-    slug: 'home-buyers', title: 'Home Buying', eyebrow: 'Buy with confidence',
+    slug: 'home-buyers', title: 'Home Buying', eyebrow: 'Home Buying',
     intro: 'Family owned since 2004, 1st Texas Realtors for expert Realtors with local real estate experience in Clear Lake NASA. We provide comprehensive Realtor services when buying single family residential homes, town homes and high-rise condominiums.',
     image: '/assets/reference/clearlaketxhomesforsale.jpg',
     images: ['/assets/reference/clearlaketxhomesforsale.jpg', '/assets/reference/leaguecityhomesforsale.jpg', '/assets/reference/NASAhomesforsale.jpg', '/assets/client/Clear-Lake-239.jpg', '/assets/client/Team-239.jpg'],
@@ -151,7 +139,7 @@ export const servicePages: Record<string, ServicePage> = {
       { name: 'Deer Park', href: '/realtors-in-deer-park-2/' },
       { name: 'Dickinson', href: '/realtors-in-dickinson/' },
       { name: 'El Lago', href: '/realtors-in-el-lago/' },
-      { name: 'Friendswood', href: '/realtors-in-friendswood/' },
+      { name: 'Friendswood', href: '/realtors-in-friendswood-2/' },
       { name: 'Galveston', href: '/realtors-in-galveston/' },
       { name: 'Kemah', href: '/realtors-in-kemah/' },
       { name: 'La Porte', href: '/realtors-in-la-porte-2/' },
@@ -172,7 +160,7 @@ export const servicePages: Record<string, ServicePage> = {
     areaNote: '1st Texas Realtors for expert Home Buying services in Baytown, Clear Lake City, Clear Lake Shores, Deer Park, Dickinson, El Lago, Friendswood, Galveston, Kemah, La Porte, League City, Nassau Bay, Pasadena, Pearland, Seabrook, Taylor Lake Village, Texas City, Tiki Island and Webster, Texas.',
   },
   'seller-services': {
-    slug: 'seller-services', title: 'Home Selling', eyebrow: 'Sell with a strategy',
+    slug: 'seller-services', title: 'Home Selling', eyebrow: 'Home Selling',
     intro: 'Family owned since 2004, 1st Texas Realtors for expert local Realtors in the Clear Lake NASA area, dedicated customer service and real time listings. Our Realtors total over 100-years combined real estate experience; when you hire one, you get the knowledge and experience of all. We provide comprehensive Realtor services when selling single family residential homes, town homes, high-rise condominiums, land and lots.',
     image: '/assets/reference/seabrookhomesforsale.jpg',
     images: ['/assets/reference/seabrookhomesforsale.jpg', '/assets/reference/seabrookhomesforsale02.jpg', '/assets/reference/friendswoodhomesforsale.jpg', '/assets/reference/leaguecityhomesforsale.jpg', '/assets/client/David-Simone-239.jpg'],
@@ -185,7 +173,7 @@ export const servicePages: Record<string, ServicePage> = {
     ],
   },
   'homes-for-rent': {
-    slug: 'homes-for-rent', title: 'Homes for Rent & Property Management', eyebrow: 'Find the right fit',
+    slug: 'homes-for-rent', title: 'Homes for Rent & Property Management', eyebrow: 'Homes for Rent',
     intro: 'Family owned since 2004, the 1st Texas Realtors provide expert Realtors with local real estate experience in Clear Lake NASA. We provide comprehensive Realtor services when renting or leasing homes, town homes and high-rise condominiums.',
     image: '/assets/reference/NASAhomesforsale.jpg',
     images: ['/assets/reference/NASAhomesforsale.jpg', '/assets/client/Shrimp-Boat-239.jpg'],
@@ -195,7 +183,7 @@ export const servicePages: Record<string, ServicePage> = {
     ],
   },
   'new-home-construction': {
-    slug: 'new-home-construction', title: 'New Home Construction', eyebrow: 'Build your next chapter',
+    slug: 'new-home-construction', title: 'New Home Construction', eyebrow: 'New Home Construction',
     intro: 'We help families with new home construction in the Clear Lake area and have experience with Trendmaker Homes, Taylor Morrison Home Builders, DR Horton and Gehan Homes.',
     images: ['/assets/reference/friendswoodhomesforsale.jpg', '/assets/reference/clearlaketxhomesforsale.jpg', '/assets/reference/leaguecityhomesforsale.jpg', '/assets/reference/seabrookhomesforsale02.jpg'],
     sections: [
@@ -206,7 +194,7 @@ export const servicePages: Record<string, ServicePage> = {
     ],
   },
   'home-staging': {
-    slug: 'home-staging', title: 'Home Staging & Renovations', eyebrow: 'Prepare to stand out',
+    slug: 'home-staging', title: 'Home Staging & Renovations', eyebrow: 'Home Staging & Renovations',
     intro: 'Follow these home staging guidelines to add significant value to the sale of your home at little to no cost.',
     images: ['/assets/reference/NASAhomesforsale.jpg', '/assets/reference/friendswoodhomesforsale.jpg', '/assets/reference/leaguecityhomesforsale.jpg', '/assets/reference/seabrookhomesforsale.jpg', '/assets/reference/clearlaketxhomesforsale.jpg'],
     sections: [
@@ -218,7 +206,7 @@ export const servicePages: Record<string, ServicePage> = {
     ],
   },
   'relocation-service': {
-    slug: 'relocation-service', title: 'Relocation Service', eyebrow: 'Know where you\'re going',
+    slug: 'relocation-service', title: 'Relocation Service', eyebrow: 'Relocation Service',
     intro: '1st Texas Realtors for expert Clear Lake relocation service; our Realtors total over 100-years combined real estate experience; when you hire one, you get the experience and knowledge of all. No matter where you\'re from, we can all agree picking up your life and relocating can be very difficult even for the well prepared. Add children, pets and a deadline to begin your new job and it\'s even more stressful. But we can help!',
     images: ['/assets/reference/Clear-Lake-Texas-e1736781694121.jpg', '/assets/client/Clear-Lake-239.jpg', '/assets/client/Fishing-Pier-239.jpg', '/assets/client/Space-Shuttle-239.jpg', '/assets/client/1st-texas-realtors-night-couple-e1617199697674.jpg'],
     sections: [
@@ -230,7 +218,7 @@ export const servicePages: Record<string, ServicePage> = {
     ],
   },
   'commercial-property-realtors': {
-    slug: 'commercial-property-realtors', title: 'Commercial Property Realtors', eyebrow: 'Local commercial expertise',
+    slug: 'commercial-property-realtors', title: 'Commercial Property Realtors', eyebrow: 'Commercial Property Realtors',
     intro: 'Family owned since 2004, the 1st Texas Realtors is a full-service real estate brokerage with vast commercial property experience in buying, selling, permitting, financing and property management of commercial property and multi family for sale. I specialize in businesses including banks, automotive, churches, restaurants, office space and multi-unit residential apartments. — David Karstedt',
     image: '/assets/reference/Clear-Lake-Texas-e1736781694121.jpg',
     images: ['/assets/reference/Clear-Lake-Texas-e1736781694121.jpg', '/assets/reference/seabrookhomesforsale02.jpg'],
@@ -241,27 +229,4 @@ export const servicePages: Record<string, ServicePage> = {
   },
 }
 
-export const coreRoutes = ['about', 'realtor-reviews', 'faqs', 'agents', 'privacy-policy', 'contact']
-export const idxRoutes = ['home-search', 'register', 'login', 'new-home-construction', 'home-staging', 'relocation-service', 'commercial-property-realtors']
-
-export const allStaticPaths = [
-  ...coreRoutes,
-  ...Object.keys(servicePages),
-  ...agents.map(agent => `agents/${agent.slug}`),
-  ...idxRoutes,
-  ...serviceAreas.flatMap(area => [`realtors-in-${areaSlug(area)}`, `${areaSlug(area)}-tx-homes-for-rent`]),
-  'clear-lake-tx-homes-for-sale',
-  // legacy aliases matching the original site's URLs exactly
-  'realtors-in-clear-lake-shores-2',
-  'realtors-in-deer-park-2',
-  'realtors-in-friendswood-2',
-  'realtors-in-la-porte-2',
-  'realtors-in-pearland-2',
-  'realtors-in-san-leon-2',
-  'realtors-in-shoreacres-2',
-  'realtors-in-texas-city-2',
-  'realtors-in-webster-2',
-  'galveston-homes-for-rent',
-  'league-city-homes-for-rent',
-  'agents/nancy-van-estes',
-]
+export { canonicalSlugs as allStaticPaths, canonicalPublicPaths } from './paths'
