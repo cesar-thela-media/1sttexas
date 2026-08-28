@@ -200,6 +200,7 @@ html.intro-locked, html.intro-locked body { overflow: hidden; }
 /* Promo + nav share --promo-bar-height so the header never covers the bar */
 :root {
   --promo-bar-height: 2.625rem; /* 42px — keep in sync with .promo-bar min-height/padding */
+  --header-sticky-height: 4.5rem;
 }
 .promo-bar {
   position: relative; top: 0; left: 0; right: 0; z-index: 30;
@@ -242,6 +243,7 @@ body:has(.video-hero) .site-header.scrolled {
   position: sticky;
   top: 0;
   left: 0; right: 0;
+  min-height: var(--header-sticky-height, 4.5rem);
   background: rgba(255, 255, 255, 0.97);
   color: var(--navy);
   border: 0;
@@ -1320,6 +1322,7 @@ blockquote cite {
   z-index: 8;
   isolation: isolate;
   overflow: hidden;
+  scroll-margin-top: var(--header-sticky-height);
   background: linear-gradient(160deg, #1e5fd6, var(--red) 55%, var(--red-warm));
   color: #fff;
   padding: 90px 7vw;
@@ -1359,7 +1362,29 @@ blockquote cite {
 .nws-review-card cite {
   color: var(--navy); font-size: 15px; font-style: normal; font-weight: 750;
 }
-.nws-review-card blockquote { margin: 0; color: var(--ink); font-size: 15px; line-height: 1.7; }
+.nws-review-card blockquote,
+.nws-review-card > blockquote,
+.nws-review-card blockquote p {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  color: var(--ink) !important;
+  -webkit-text-fill-color: var(--ink) !important;
+  font-size: 15px !important;
+  line-height: 1.7 !important;
+  font-weight: 500;
+  text-shadow: none;
+}
+.nws-review-card cite {
+  color: var(--navy) !important;
+  -webkit-text-fill-color: var(--navy) !important;
+  text-transform: none;
+  letter-spacing: 0;
+  margin-top: 0;
+}
 .nws-reviews-cta {
   justify-self: center; display: inline-flex; align-items: center; gap: 10px;
   padding: 13px 26px; border-radius: 999px;
@@ -6785,11 +6810,9 @@ button.button.button-navy *,
 .nws-services-intro .section-heading p { color: #fff; }
 .nws-services-intro .section-heading .eyebrow { color: var(--red-warm); }
 
-html:has(.svc-section-stack) {
-  scroll-snap-type: y proximity;
-}
-html:has(.site-header.scrolled) {
-  scroll-padding-top: 0;
+html:has(.video-hero):has(.site-header.scrolled) .svc-section-pin {
+  top: var(--header-sticky-height);
+  height: calc(100svh - var(--header-sticky-height));
 }
 
 .svc-section-stack {
@@ -6811,8 +6834,6 @@ html:has(.site-header.scrolled) {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
 }
 
 /* Edge-to-edge section — no card chrome, fills the pin */
@@ -6929,9 +6950,6 @@ html:has(.site-header.scrolled) {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html:has(.svc-section-stack) {
-    scroll-snap-type: none;
-  }
   .svc-section-panel {
     transform: none !important;
   }
