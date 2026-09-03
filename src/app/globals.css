@@ -3576,7 +3576,7 @@ blockquote {
   .areas-slide-right { transform: none; }
   .areas-slide-row { overflow-x: auto; }
   .nws-rev-track { transform: none; }
-  .nws-rev-scroll { height: auto; overflow-y: auto; max-height: 540px; }
+  .nws-rev-scroll { height: 540px; overflow: hidden; max-height: 540px; }
 }
 
 /* The service-area marquee is an intentional navigation cue, not a user
@@ -3592,11 +3592,11 @@ blockquote {
    paint over the area marquee or footer. */
 @media (prefers-reduced-motion: reduce) {
   #reviews .nws-rev-scroll {
-    height: auto;
-    max-height: none;
+    height: 540px;
+    max-height: 540px;
     overflow: hidden;
-    -webkit-mask-image: none;
-    mask-image: none;
+    -webkit-mask-image: linear-gradient(180deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(180deg, transparent, #000 8%, #000 92%, transparent);
   }
   #reviews .nws-rev-track {
     transform: none;
