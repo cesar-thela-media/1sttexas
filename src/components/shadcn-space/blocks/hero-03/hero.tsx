@@ -1,9 +1,18 @@
 "use client";
 
-import { useRef, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { motion, useInView } from "motion/react";
+import { motion } from "motion/react";
+
+function armVideo(video: HTMLVideoElement) {
+  video.muted = true
+  video.defaultMuted = true
+  video.playsInline = true
+  video.setAttribute('muted', '')
+  video.setAttribute('playsinline', '')
+  video.setAttribute('webkit-playsinline', 'true')
+}
 
 export default function HeroSection({
   eyebrow = "Home Selling",
@@ -24,20 +33,41 @@ export default function HeroSection({
   ctaLabel?: string
   children?: ReactNode
 }) {
-  const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const el = videoRef.current
+    if (!el) return
+    armVideo(el)
+    const play = () => {
+      armVideo(el)
+      el.play().catch(() => {})
+    }
+    play()
+    el.addEventListener('loadeddata', play)
+    el.addEventListener('canplay', play)
+    window.addEventListener('pointerdown', play, { once: true })
+    window.addEventListener('scroll', play, { once: true, passive: true })
+    return () => {
+      el.removeEventListener('loadeddata', play)
+      el.removeEventListener('canplay', play)
+      window.removeEventListener('pointerdown', play)
+      window.removeEventListener('scroll', play)
+    }
+  }, [video])
 
   return (
     <section
-      ref={sectionRef}
       className="sell-cinematic-hero relative flex items-end text-white bg-[var(--navy-deep)] h-auto min-h-0 md:h-full md:min-h-[calc(100svh-7.5rem)] overflow-hidden"
     >
       <video
+        ref={videoRef}
         className="absolute top-0 left-0 w-full h-full object-cover"
         loop
         autoPlay
         muted
         playsInline
+        preload="metadata"
         poster={poster}
       >
         <source src={video} type="video/mp4" />
@@ -69,12 +99,7 @@ export default function HeroSection({
               )}
             </p>
           </div>
-          <motion.div
-            initial={{ opacity: 0, y: 32 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 32 }}
-            transition={{ duration: 0.3, ease: "easeInOut", delay: 0.2 }}
-            className="flex sm:flex-row flex-col items-start lg:items-baseline gap-4"
-          >
+          <div className="flex sm:flex-row flex-col items-start lg:items-baseline gap-4">
             <h1 className="text-[1.7rem] leading-[1.08] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold font-[family-name:var(--font-display)] tracking-[-0.04em] max-w-full break-words">
               {title}
             </h1>
@@ -89,7 +114,7 @@ export default function HeroSection({
                 </span>
               </Link>
             </div>
-          </motion.div>
+          </div>
           {children}
         </div>
       </div>
